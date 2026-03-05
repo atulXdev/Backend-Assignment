@@ -105,6 +105,6 @@ app.delete("/users/:id", async (req, res) => {
   res.json({ message: "User deleted" })
 })
 
-app.listen(6000, () => {
-  console.log("server is running on 6000")
+app.listen(5000, () => {
+  console.log("server is running on 5000")
 })

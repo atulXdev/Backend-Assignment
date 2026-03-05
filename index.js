@@ -1,13 +1,21 @@
 import express from "express"
 import mongoose from "mongoose"
+import dotenv from "dotenv"
+dotenv.config()
 
 const app = express()
 app.use(express.json())
 
-mongoose
-  .connect("mongodb+srv://atulkumarb61_db_user:hTfwqI9sux1k9Nly@cluster0.rjwb19e.mongodb.net/task1")
-  .then(() => console.log("MongoDb connected sucessfully"))
-  .catch((err) => console.log(err))
+
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+  console.log("MongoDB connected")
+
+  app.listen(process.env.PORT || 5000, () => {
+    console.log("Server running")
+  })
+})
+.catch(err => console.log(err))
 
 // creating Schema
 // const userSchema = new mongoose.Schema({
